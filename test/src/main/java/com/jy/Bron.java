@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -30,7 +31,8 @@ public class Bron {
     private WeProperties properties;
 
     @GetMapping("/test")
-    public String test() {
+    public String test(@RequestParam String a) {
+        logger.error("devtools");
         logger.error("微信平台配置 : {}", properties.toString());
         logger.error("获取微信公众平台accessToken : {}", client.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret()).toString());
         return testService.test();}
