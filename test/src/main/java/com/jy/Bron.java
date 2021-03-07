@@ -1,6 +1,7 @@
 package com.jy;
 
-import com.jy.bron.we.forest.client.WeAccessToeknClient;
+import com.jy.bron.we.config.WeProperties;
+import com.jy.bron.we.forest.client.WeAccessTokenClient;
 import com.jy.bron.we.service.TestService;
 import com.thebeastshop.forest.springboot.annotation.ForestScan;
 import org.slf4j.Logger;
@@ -20,13 +21,17 @@ public class Bron {
     public static void main(String[] args) {
         SpringApplication.run(Bron.class, args);
     }
+
     @Resource
-    private WeAccessToeknClient client;
+    private WeAccessTokenClient client;
     @Resource
     private TestService testService;
+    @Resource
+    private WeProperties properties;
 
     @GetMapping("/test")
     public String test() {
-        logger.error("test forest {}", client.firstRequest());
+        logger.error("微信平台配置 : {}", properties.toString());
+        logger.error("获取微信公众平台accessToken : {}", client.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret()).toString());
         return testService.test();}
 }
