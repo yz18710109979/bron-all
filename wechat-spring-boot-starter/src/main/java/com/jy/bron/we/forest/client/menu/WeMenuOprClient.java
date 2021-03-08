@@ -17,10 +17,10 @@ import javax.jws.WebResult;
 public interface WeMenuOprClient {
     // 菜单创建
     @Request(url = Constants.MENU_CREATE,
-            type = HttpMethod.POST) WebResult menuCreate(@DataObject WeMenuDto weMenuDto);
+            type = HttpMethod.POST, interceptor = {ForestInterceptor.class}) WebResult menuCreate(@DataObject WeMenuDto weMenuDto);
 
 
     // 菜单查询
     @Request(url = Constants.GET_CURRENT_SELFMENU_INFO,
-            type = HttpMethod.GET) WeMenuQueryDto getCurrentSelfmenuInfo();
+            type = HttpMethod.GET, interceptor = {ForestInterceptor.class}) WeMenuQueryDto getCurrentSelfmenuInfo();
 }

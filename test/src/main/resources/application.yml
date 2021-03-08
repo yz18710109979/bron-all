@@ -3,6 +3,3 @@ wx:
   appId: "wx7b7f193c9f29547d"
   appSecret: "4a27176d97980ededb75ecf84cc7d458"
 
-forest:
-  interceptors: com.jy.bron.we.forest.interceptor.ForestInterceptor
-  backend: httpclient

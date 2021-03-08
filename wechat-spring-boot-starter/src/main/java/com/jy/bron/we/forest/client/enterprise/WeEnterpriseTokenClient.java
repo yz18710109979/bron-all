@@ -7,7 +7,7 @@ import com.jy.bron.we.constants.Constants;
 import com.jy.bron.we.domain.dto.WeAccessTokenDto;
 import com.jy.bron.we.forest.interceptor.ForestEnterpriseInterceptor;
 
-public interface WeEnterpriseToken {
+public interface WeEnterpriseTokenClient {
     // 第三方不需要
     @Request(url = Constants.ENTERPRISE_GET_SUITE_TOKEN,
             type = HttpMethod.POST,

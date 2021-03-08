@@ -5,6 +5,7 @@ import com.dtflys.forest.annotation.Request;
 import com.jy.bron.core.utils.HttpMethod;
 import com.jy.bron.we.constants.Constants;
 import com.jy.bron.we.domain.dto.WeAccessTokenDto;
+import com.jy.bron.we.forest.interceptor.ForestInterceptor;
 
 /**
  * @author Yangz on:
@@ -23,11 +24,8 @@ public interface WeAccessTokenClient {
      * @return
      */
     @Request(url = Constants.accessToken,
-            type = HttpMethod.GET
+            type = HttpMethod.GET,
+            interceptor = {ForestInterceptor.class}
     )
     WeAccessTokenDto getAccessToken(@Query("grant_type") String grant_type, @Query("appid") String appid, @Query("secret") String secret);
-
-
-    //TODO 企业微信相关token
-
 }

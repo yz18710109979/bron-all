@@ -7,6 +7,7 @@ import com.dtflys.forest.extensions.DownloadFile;
 import com.jy.bron.core.utils.HttpMethod;
 import com.jy.bron.we.constants.Constants;
 import com.jy.bron.we.domain.dto.media.WeMediaResultDto;
+import com.jy.bron.we.forest.interceptor.ForestInterceptor;
 
 import java.io.File;
 import java.io.InputStream;
@@ -17,11 +18,15 @@ import java.io.InputStream;
  */
 public interface WeMediaOprClient {
 
-    @Request(url = Constants.MEDIA_UPLOAD, type = HttpMethod.POST)
+    @Request(url = Constants.MEDIA_UPLOAD,
+            type = HttpMethod.POST,
+            interceptor = {ForestInterceptor.class})
     WeMediaResultDto mediaUpload(String type, @DataFile("file") File file);
 
 
-    @Request(url = Constants.MEDIA_GET, type = HttpMethod.GET)
+    @Request(url = Constants.MEDIA_GET,
+            type = HttpMethod.GET,
+            interceptor = {ForestInterceptor.class})
 //    @DownloadFile()
     InputStream mediaGet(String mediaId);
 
