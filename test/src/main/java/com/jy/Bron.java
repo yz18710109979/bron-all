@@ -1,10 +1,7 @@
 package com.jy;
 
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
 import com.jy.bron.we.config.WeProperties;
-import com.jy.bron.we.config.WqEnterpriseProperties;
-import com.jy.bron.we.domain.dto.WeAccessTokenDto;
 import com.jy.bron.we.domain.dto.media.WeMediaResultDto;
 import com.jy.bron.we.domain.dto.menu.WeMenuQueryDto;
 import com.jy.bron.we.forest.client.WeAccessTokenClient;
@@ -48,7 +45,10 @@ public class Bron {
     @GetMapping("/test")
     public String test() {
 
-//        logger.error("devtools");
+//        logger.error("d
+//
+//        Y
+//        evtools");
 //        logger.error("微信平台配置 : {}", properties.toString());
 //        WeAccessTokenDto accessTokenDto = client.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
 //        logger.error("获取微信公众平台accessToken : {}", accessTokenDto);
