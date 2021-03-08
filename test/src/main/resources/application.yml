@@ -2,4 +2,25 @@ wx:
   open: true
   appId: "wx7b7f193c9f29547d"
   appSecret: "4a27176d97980ededb75ecf84cc7d458"
+  serverUrl: "https://api.weixin.qq.com/"
+  prefix: "cgi-bin"
+  noAccessTokenUrl: /token
+  needAccessTokenUrl: /menu/create
+                    -/get_current_selfmenu_info
+                    -/media/upload
+  enterprise:
+    corpId: "a"
+    providerSecret: "b"
+    suitId: "c"
+    suiteSecret: "d"
+    token: "e"
+    encodingAESKey: "f"
+    authType: 1
+    templateId: ""
+    serverUrl: "https://qyapi.weixin.qq.com/"
+    prefix: "cgi-bin"
+    noAccessTokenUrl: ""
+    needSuiteTokenUrl: ""
+    needProviderTokenUrl: ""
+    needCorpAccessTokenUrl: ""
 

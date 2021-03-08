@@ -1,6 +1,6 @@
 package com.jy.bron.we.constants;
 
-public class Constants {
+public class WeConstants {
 
     public static final Integer WE_SUCCESS_CODE = 0;
     public static final String accessToken = "/token";
@@ -14,6 +14,11 @@ public class Constants {
 
     // 用户管理
     public static final String USER_INFO = "/user/info";
+
+
+    // 公众号消息
+    public static final String MESSAGE_SUBSCRIBE_SEND = "/message/subscribe/send";
+    public static final String MESSAGE_WXOPEN_TEMPLATE_UNIFORM_SEND = "/message/wxopen/template/uniform_send";
 
     // 企业微信
     public static final String ENTERPRISE_GET_SUITE_TOKEN = "/service/get_suite_token";
@@ -47,4 +52,9 @@ public class Constants {
     public static final String ENTERPRISE_LIVING_GET_USER_ALL_LIVING_ID = "/living/get_user_all_livingid";
     public static final String ENTERPRISE_LIVING_GET_LIVING_INFO = "/living/get_living_info";
     public static final String ENTERPRISE_LIVING_GET_WATCH_STATE = "/living/get_watch_stat";
+
+
+    // 消息推送
+    public static final String ENTERPRISE_SEND_MESSAGE = "/message/send";
+    public static final String ENTERPRISE_APPCHAT_SEND = "/appchat/send";
 }

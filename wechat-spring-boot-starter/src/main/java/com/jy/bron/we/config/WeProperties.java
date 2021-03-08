@@ -17,7 +17,6 @@ public class WeProperties {
             "/media/upload"
     };
 
-    private WeEnterpriseProperties weEnterpriseProperties;
     public String getAppId() {
         return appId;
     }
@@ -64,13 +63,5 @@ public class WeProperties {
 
     public void setNeedAccessTokenUrl(String[] needAccessTokenUrl) {
         this.needAccessTokenUrl = needAccessTokenUrl;
-    }
-
-    public WeEnterpriseProperties getWeEnterpriseProperties() {
-        return weEnterpriseProperties;
-    }
-
-    public void setWeEnterpriseProperties(WeEnterpriseProperties weEnterpriseProperties) {
-        this.weEnterpriseProperties = weEnterpriseProperties;
     }
 }

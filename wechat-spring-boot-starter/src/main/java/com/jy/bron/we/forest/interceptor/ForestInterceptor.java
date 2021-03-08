@@ -6,7 +6,7 @@ import com.dtflys.forest.http.ForestRequest;
 import com.dtflys.forest.http.ForestResponse;
 import com.dtflys.forest.interceptor.Interceptor;
 import com.jy.bron.we.config.WeProperties;
-import com.jy.bron.we.constants.Constants;
+import com.jy.bron.we.constants.WeConstants;
 import com.jy.bron.we.domain.dto.WeAccessTokenDto;
 import com.jy.bron.we.domain.dto.WeResultDto;
 import com.jy.bron.we.forest.client.WeAccessTokenClient;
@@ -34,10 +34,10 @@ public class ForestInterceptor implements Interceptor {
         if (!Arrays.asList(properties.getNoAccessTokenUrl()).contains(uri)) {
             WeAccessTokenDto accessToken = weAccessTokenClient.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
             request.addQuery("access_token", accessToken.getAccess_token());
-            if (Constants.MEDIA_UPLOAD.equals(uri)) {
+            if (WeConstants.MEDIA_UPLOAD.equals(uri)) {
                 request.addQuery("type", request.getArguments()[0]);
             }
-            if (Constants.MEDIA_GET.equals(uri)) {
+            if (WeConstants.MEDIA_GET.equals(uri)) {
                 request.addQuery("media_id", request.getArguments()[0]);
             }
         }
@@ -67,7 +67,7 @@ public class ForestInterceptor implements Interceptor {
     @Override
     public void onSuccess(Object o, ForestRequest forestRequest, ForestResponse forestResponse) {
         WeResultDto weResultDto = JSONUtil.toBean(forestResponse.getContent(), WeResultDto.class);
-        if(null != weResultDto.getErrcode() && !weResultDto.getErrcode().equals(Constants.WE_SUCCESS_CODE)){
+        if(null != weResultDto.getErrcode() && !weResultDto.getErrcode().equals(WeConstants.WE_SUCCESS_CODE)){
             throw new ForestRuntimeException(forestResponse.getContent());
         }
         logger.error("weResultDto = {}", JSONUtil.toJsonStr(weResultDto));

@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @create 2021/3/8
  */
 @ConfigurationProperties(prefix = "wx.enterprise")
-public class WeEnterpriseProperties {
+public class WqEnterpriseProperties {
     private String corpId;
     private String providerSecret;
     private String suitId;
