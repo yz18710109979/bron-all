@@ -19,4 +19,12 @@ public class WeAccessTokenDto extends WeResultDto {
     public void setExpires_in(Integer expires_in) {
         this.expires_in = expires_in;
     }
+
+    @Override
+    public String toString() {
+        return "WeAccessTokenDto{" +
+                "access_token='" + access_token + '\'' +
+                ", expires_in=" + expires_in +
+                '}';
+    }
 }

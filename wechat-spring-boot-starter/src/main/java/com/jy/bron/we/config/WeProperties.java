@@ -7,11 +7,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class WeProperties {
     private String appId;
     private String appSecret;
-    private String serverUrl = "https://api.weixin.qq.com";
-    private String prefix = "/cgi-bin/";
-    private String[] noAccessTokenUrl = new String[] {"token"};
-    private String[] needAccessTokenUrl = new String[] {};
+    private String serverUrl = "https://api.weixin.qq.com/";
+    private String prefix = "cgi-bin";
+    private String[] noAccessTokenUrl = new String[] {"/token"};
+    // https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+    private String[] needAccessTokenUrl = new String[] {
+            "/menu/create",
+            "/get_current_selfmenu_info",
+            "/media/upload"
+    };
 
+    private WeEnterpriseProperties weEnterpriseProperties;
     public String getAppId() {
         return appId;
     }
@@ -58,5 +64,13 @@ public class WeProperties {
 
     public void setNeedAccessTokenUrl(String[] needAccessTokenUrl) {
         this.needAccessTokenUrl = needAccessTokenUrl;
+    }
+
+    public WeEnterpriseProperties getWeEnterpriseProperties() {
+        return weEnterpriseProperties;
+    }
+
+    public void setWeEnterpriseProperties(WeEnterpriseProperties weEnterpriseProperties) {
+        this.weEnterpriseProperties = weEnterpriseProperties;
     }
 }

@@ -13,6 +13,10 @@
     <artifactId>wechat-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
 
+    <name></name>
+    <url></url>
+    <description></description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,6 +35,21 @@
         <dependency>
             <groupId>com.dtflys.forest</groupId>
             <artifactId>spring-boot-starter-forest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.11.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.0.12</version>
         </dependency>
     </dependencies>
 </project>

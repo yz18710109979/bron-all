@@ -5,3 +5,4 @@ wx:
 
 forest:
   interceptors: com.jy.bron.we.forest.interceptor.ForestInterceptor
+  backend: httpclient

@@ -3,7 +3,7 @@ package com.jy.bron.we.forest.client;
 import com.dtflys.forest.annotation.Query;
 import com.dtflys.forest.annotation.Request;
 import com.jy.bron.core.utils.HttpMethod;
-import com.jy.bron.we.constants.ForestConstants;
+import com.jy.bron.we.constants.Constants;
 import com.jy.bron.we.domain.dto.WeAccessTokenDto;
 
 /**
@@ -22,7 +22,7 @@ public interface WeAccessTokenClient {
      * @param secret
      * @return
      */
-    @Request(url = ForestConstants.accessToken,
+    @Request(url = Constants.accessToken,
             type = HttpMethod.GET
     )
     WeAccessTokenDto getAccessToken(@Query("grant_type") String grant_type, @Query("appid") String appid, @Query("secret") String secret);

@@ -207,9 +207,6 @@
     </build>
 
     <profiles>
-
-
-
         <profile>
             <id>sonar-apache</id>
             <properties>
@@ -228,7 +225,7 @@
                             <followSymLinks>false</followSymLinks>
                             <filesets>
                                 <fileset>
-                                    <directory>${user.home}/nacos/data</directory>
+                                    <directory>${user.home}/bron/data</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
@@ -596,6 +593,21 @@
                 <groupId>com.dtflys.forest</groupId>
                 <artifactId>spring-boot-starter-forest</artifactId>
                 <version>1.5.0-RC4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.11.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.47</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>4.0.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
