@@ -46,8 +46,6 @@ public class Bron {
     public String test() {
 
 //        logger.error("d
-//
-//        Y
 //        evtools");
 //        logger.error("微信平台配置 : {}", properties.toString());
 //        WeAccessTokenDto accessTokenDto = client.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
