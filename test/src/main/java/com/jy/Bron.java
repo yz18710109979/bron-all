@@ -43,6 +43,7 @@ public class Bron {
 
     @GetMapping("/test")
     public String test() {
+
         logger.error("devtools");
         logger.error("微信平台配置 : {}", properties.toString());
         WeAccessTokenDto accessTokenDto = client.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
