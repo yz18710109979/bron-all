@@ -14,4 +14,10 @@ public class Constants {
 
     // 用户管理
     public static final String USER_INFO = "/user/info";
+
+
+    // 企业微信
+    public static final String ENTERPRISE_GET_SUITE_TOKEN = "/service/get_suite_token";
+    public static final String ENTERPRISE_GET_PROVIDER_TOKEN = "/service/get_provider_token";
+    public static final String ENTERPRISE_GET_CORP_TOKEN = "/service/get_corp_token";
 }

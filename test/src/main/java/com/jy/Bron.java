@@ -38,11 +38,8 @@ public class Bron {
     private TestService testService;
     @Resource
     private WeProperties properties;
-
-    @Autowired
-    private WeMenuOprClient weMenuOprClient;
-    @Autowired
-    private WeMediaOprClient weMediaOprClient;
+    @Resource WeMenuOprClient weMenuOprClient;
+    @Resource WeMediaOprClient weMediaOprClient;
 
     @GetMapping("/test")
     public String test() {
@@ -53,7 +50,6 @@ public class Bron {
         WeMenuQueryDto currentSelfmenuInfo =
                 weMenuOprClient.getCurrentSelfmenuInfo();
         logger.error("获取公众号菜单信息 : {}", JSONUtil.toJsonStr(currentSelfmenuInfo));
-
         WeMediaResultDto result = weMediaOprClient.mediaUpload("image", new File("D:\\二维码\\test\\0.jpg"));
         logger.error("临时素材上传 : {}", JSONUtil.toJsonStr(result));
         String mediaId = result.getMedia_id();
