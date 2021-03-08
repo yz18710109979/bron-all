@@ -1,7 +1,8 @@
 package com.jy.bron.we.config;
 
+import com.jy.bron.we.forest.client.enterprise.WeEnterpriseTokenClient;
 import com.jy.bron.we.service.TestService;
-import com.jy.bron.we.service.WechatEnterpriseService;
+import com.jy.bron.we.service.WqEnterpriseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,6 +22,8 @@ import javax.annotation.Resource;
 public class WeAutoConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(WeAutoConfiguration.class);
     @Resource
+    WeEnterpriseTokenClient weEnterpriseTokenClient;
+    @Resource
     private WeProperties properties;
     @Resource
     private WqEnterpriseProperties wqEnterpriseProperties;
@@ -32,7 +35,10 @@ public class WeAutoConfiguration {
 
 
     @Bean
-    public WechatEnterpriseService wechatEnterpriseService() {
-        logger.error("初始化WechatEnterpriseService {}", wqEnterpriseProperties.getCorpId() + ":" + wqEnterpriseProperties.getServerUrl());
-        return new WechatEnterpriseService(); }
+    public WqEnterpriseService wqEnterpriseService() {
+        WqEnterpriseService service = new WqEnterpriseService(wqEnterpriseProperties);
+        service.setWeEnterpriseTokenClient(weEnterpriseTokenClient);
+        logger.error("初始化WechatEnterpriseService {}", wqEnterpriseProperties.getCorpId() + ":" + service.getWeEnterpriseTokenClient());
+        return service;
+    }
 }

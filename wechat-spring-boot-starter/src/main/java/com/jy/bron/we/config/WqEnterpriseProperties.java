@@ -23,7 +23,7 @@ public class WqEnterpriseProperties {
     private String[] needProviderTokenUrl = new String[]{"/service/get_register_code"};
     /** 需要corp_access_token **/
     private String[] needCorpAccessTokenUrl = new String[] {"/message/send"};
-
+    private String installUrl = "https://open.work.weixin.qq.com/3rdapp/install?suite_id=%s&pre_auth_code=%s&redirect_uri=%s&state=STATE";
     public String getCorpId() {
         return corpId;
     }
@@ -134,5 +134,14 @@ public class WqEnterpriseProperties {
 
     public void setNeedCorpAccessTokenUrl(String[] needCorpAccessTokenUrl) {
         this.needCorpAccessTokenUrl = needCorpAccessTokenUrl;
+    }
+
+
+    public String getInstallUrl() {
+        return installUrl;
+    }
+
+    public void setInstallUrl(String installUrl) {
+        this.installUrl = installUrl;
     }
 }

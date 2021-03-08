@@ -5,6 +5,9 @@ import com.dtflys.forest.exceptions.ForestRuntimeException;
 import com.dtflys.forest.http.ForestRequest;
 import com.dtflys.forest.http.ForestResponse;
 import com.dtflys.forest.interceptor.Interceptor;
+import com.jy.bron.core.utils.Objects;
+import com.jy.bron.core.utils.StringUtils;
+import com.jy.bron.we.cache.LocalCache;
 import com.jy.bron.we.config.WeProperties;
 import com.jy.bron.we.constants.WeConstants;
 import com.jy.bron.we.domain.dto.WeAccessTokenDto;
@@ -32,8 +35,15 @@ public class ForestInterceptor implements Interceptor {
         String uri=request.getUrl().replace("http://","");
         logger.error("uri = {}", uri);
         if (!Arrays.asList(properties.getNoAccessTokenUrl()).contains(uri)) {
-            WeAccessTokenDto accessToken = weAccessTokenClient.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
-            request.addQuery("access_token", accessToken.getAccess_token());
+            String accessToken = String.valueOf(LocalCache.getInstance().getValue("ACCESS_TOKEN"));
+            if (StringUtils.isBlank(accessToken)) {
+                WeAccessTokenDto result =
+                        weAccessTokenClient.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
+                accessToken = result.getAccess_token();
+                LocalCache.getInstance().putValue("ACCESS_TOKEN", accessToken, 60);
+            }
+            logger.error("URL = {}请求地址获取本地缓冲ACCESS_TOKEN : {}", uri, accessToken);
+            request.addQuery("access_token",accessToken);
             if (WeConstants.MEDIA_UPLOAD.equals(uri)) {
                 request.addQuery("type", request.getArguments()[0]);
             }
