@@ -44,7 +44,6 @@ public class Bron {
 
     @GetMapping("/test")
     public String test() {
-
 //        logger.error("d
 //        evtools");
 //        logger.error("微信平台配置 : {}", properties.toString());
