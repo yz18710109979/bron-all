@@ -14,7 +14,6 @@
         <module>api</module>
         <module>test</module>
         <module>bigdata</module>
-        <module>hadoop</module>
     </modules>
 
     <name></name>
