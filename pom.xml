@@ -12,6 +12,7 @@
         <module>wechat-spring-boot-starter</module>
         <module>api</module>
         <module>test</module>
+        <module>utils</module>
     </modules>
 
     <name></name>
