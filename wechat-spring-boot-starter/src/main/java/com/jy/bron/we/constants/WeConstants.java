@@ -1,7 +1,10 @@
 package com.jy.bron.we.constants;
 
 public class WeConstants {
-
+    public static final String SUITE_TICKET = "SUITE_TICKET";
+    public static final String SUITE_ACCESS_TOKEN = "SUITE_ACCESS_TOKEN";
+    public static final String PROVIDER_ACCESS_TOKEN = "PROVIDER_ACCESS_TOKEN";
+    public static final String CORP_ACCESS_TOKEN = "CORP_ACCESS_TOKEN";
     public static final Integer WE_SUCCESS_CODE = 0;
     public static final String accessToken = "/token";
     // 公众号菜单

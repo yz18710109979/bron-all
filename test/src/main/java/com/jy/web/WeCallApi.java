@@ -1,6 +1,9 @@
 package com.jy.web;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jy.bron.api.common.Constants;
+import com.jy.bron.we.cache.LocalCache;
+import com.jy.bron.we.constants.WeConstants;
 import com.jy.bron.we.domain.vo.WxCpXmlMessageVO;
 import com.jy.bron.we.service.WqEnterpriseService;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +22,11 @@ public class WeCallApi {
     public String recive(@RequestBody String msg, @RequestParam(name = "msg_signature") String signature,
                          String timestamp, String nonce) {
         WxCpXmlMessageVO wxCpXmlMessageVO = wqEnterpriseService.recivePost(msg, signature, timestamp, nonce);
-        return null;
+        if (wxCpXmlMessageVO.getInfoType().equals("suite_ticket")) {
+            LocalCache.getInstance().putValue("SUITE_TICKET", wxCpXmlMessageVO.getSuiteTicket(), 10 * 60);
+            return Constants.SUCCESS;
+        }
+        return Constants.SUCCESS;
     }
 
     @GetMapping(value = "/recive", produces = {"application/xml;charset=UTF-8"})

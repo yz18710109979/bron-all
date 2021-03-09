@@ -37,10 +37,11 @@ public class ForestInterceptor implements Interceptor {
         if (!Arrays.asList(properties.getNoAccessTokenUrl()).contains(uri)) {
             String accessToken = String.valueOf(LocalCache.getInstance().getValue("ACCESS_TOKEN"));
             if (StringUtils.isBlank(accessToken)) {
-                WeAccessTokenDto result =
-                        weAccessTokenClient.getAccessToken("client_credential", properties.getAppId(), properties.getAppSecret());
+                String appId = properties.getAppId();
+                String appSecret = properties.getAppSecret();
+                WeAccessTokenDto result = weAccessTokenClient.getAccessToken("client_credential", appId, appSecret);
                 accessToken = result.getAccess_token();
-                LocalCache.getInstance().putValue("ACCESS_TOKEN", accessToken, 60);
+                LocalCache.getInstance().putValue("ACCESS_TOKEN", accessToken, 7200);
             }
             logger.error("URL = {}请求地址获取本地缓冲ACCESS_TOKEN : {}", uri, accessToken);
             request.addQuery("access_token",accessToken);

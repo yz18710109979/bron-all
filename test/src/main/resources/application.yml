@@ -9,18 +9,41 @@ wx:
                     -/get_current_selfmenu_info
                     -/media/upload
   enterprise:
-    corpId: "a"
-    providerSecret: "b"
-    suitId: "c"
-    suiteSecret: "d"
-    token: "e"
-    encodingAESKey: "f"
+    corpId: ww2ff786d7101735c0
+    providerSecret: LwnqwKKH4lkAHpzOgck8wkowYbPsqzcgMBu9RdYV0fSxbhb1Qs_mVSUgdzfe9png
+    suitId: ww576d7d0c29aa1135
+    suiteSecret: Oy5sP273cWUnkHp_a11k8nSZNDvuw0CEAxYw8rE0zRM
+    token: 6qAdEcAJq18UxQ61iJaK5t4gT1Z3sS
+    encodingAESKey: J797hoUzVCksCJkS3ACtiXlf1amWDDLJLFXcH6WVjuB
     authType: 1
     templateId: ""
-    serverUrl: "https://qyapi.weixin.qq.com/"
-    prefix: "cgi-bin"
-    noAccessTokenUrl: ""
-    needSuiteTokenUrl: ""
-    needProviderTokenUrl: ""
-    needCorpAccessTokenUrl: ""
+    serverUrl: https://qyapi.weixin.qq.com/
+    prefix: cgi-bin
+    noAccessTokenUrl: /gettoken,/service/get_provider_token,/service/get_suite_token
+    needSuiteTokenUrl: /service/get_pre_auth_code,
+                      /service/set_session_info,
+                      /service/get_permanent_code,
+                      /service/getuserinfo3rd,
+                      /service/getuserdetail3rd,
+                      /service/get_corp_token
+    needProviderTokenUrl: /service/get_register_code
+    needCorpAccessTokenUrl: /externalcontact/get_follow_user_list,
+                            - /oa/approval/copytemplate,
+                            - /oa/gettemplatedetail,
+                            - /oa/applyevent,
+                            - /oa/getapprovaldetail,
+                            - /living/create,
+                            - /living/modify,
+                            - /living/cancel,
+                            - /living/delete_replay_data,
+                            - /living/get_living_code,
+                            - /living/get_user_all_livingid,
+                            - /living/get_living_info,
+                            - /living/get_watch_stat,
+                            - /oa/calendar/add,
+                            - /oa/schedule/add,
+                            - /meeting/create,
+                            - /meeting/update,
+                            - /meeting/cancel,
+                            - /meeting/get_user_meetingid
 
