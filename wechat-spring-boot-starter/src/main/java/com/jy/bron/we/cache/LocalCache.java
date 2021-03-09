@@ -153,7 +153,7 @@ public class LocalCache {
                 if (tce.getExpire() > timoutTime) {
                     continue;
                 }
-                log.info(" 清除过期缓存 ： " + key);
+//                log.info(" 清除过期缓存 ： " + key);
                 //清除过期缓存和删除对应的缓存队列
                 cache.remove(key);
             }

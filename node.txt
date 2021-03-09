@@ -1,0 +1,139 @@
+改变原有的环境变量
+npm config set prefix "D:\Program Files\nodejs\node_global"
+npm config set cache"D:\Program Files\nodejs\node_cache"
+
+在系统环境变量添加NODE_PATH,输入路径为： D:\Program Files\nodejs\node_global
+
+在命令行输入以下命令安装express（注：“-g”表示安装到global目录下，就是上面设置的node_global中）: npm install express -g
+
+
+在命令行输入node进入编辑模式，输入以下代码检测是否能正常加载模块：require('express')
+
+
+
+
+安装cnpm淘宝镜像
+npm install -g cnpm -registry=https://registry.npm.taobao.org
+输入cnpm -v ，检测是否正常，但是这里会报错。
+
+添加系统变量path的内容
+因为cnpm会被安装到D:\Program Files\nodejs\node_global下，而系统变量path并未包含该路径。在系统变量path下添加该路径即可正常使用cnpm。
+
+配置环境变量
+CNPM_HOME=C:\Program Files\nodejs\node_global\node_modules\cnpm\bin 加入到Path
+NODE_HOME=C:\Program Files\nodejs 加入到Path
+
+
+// 安装vue
+cnpm install -g @vue/cli
+// 版本验证
+vue -V
+// 创建项目
+vue create <Project Name> //文件名 不支持驼峰（含大写字母）
+cd wx-demo
+npm run serve
+
+
+精简了很多，但还是和vue2.0有很多区别的，基本的用法变化不是特别大
+
+① vuex（状态管理）：
+
+　　vue cli 2 中 ：vuex是搭建完成后自己npm install的，并不包括在搭建过程中。可以看到vue cli 2的vuex默认文件夹（store）又包含了三个js文件：action（存放一些调用外部API接口的异步执行的的方法，然后commit mutations改变mutations 数据）、index（初始化mutations 数据，是store的出口）、mutations（处理数据逻辑的同步执行的方法的集合，Vuex中store数据改变的唯一方法commit mutations）
+
+　　vue cli 3 中：vuex是包含在搭建过程供选择的预设。vue cli 3 中默认只用一个store.js代替了原来的store文件夹中的三个js文件。action、mutations、state以及store 的 getters 的用法有很多
+
+② router （路由）：
+
+　　vue cli 2 ：“ router/index.js ”
+
+　　vue cli 3：“router.js”（用法和做的事都一样）
+
+③ 去掉 static  、 新增 public 文件夹
+
+　　vue cli 2 ：static 是 webpack 默认存放静态资源的文件夹，打包时会直接复制一份到dist文件夹不会经过 webpack 编译
+
+　　vue cli 3  ：摒弃 static 新增了 public 。vue cli 3 中“静态资源”两种处理方式：
+
+　　经webpack 处理：在 JavaScript 被导入或在 template/CSS 中通过“相对路径”被引用的资源会被编译并压缩
+
+　　不经webpack 处理：放置在 public 目录下或通过绝对路径被引用的资源将会“直接被拷贝”一份，不做任何编译压缩处理
+
+④ index.html ：
+
+　　vue cli 2 ：“index.html ”
+
+　　vue cli 3 ：“public/index.html ”此模板会被 html-webpack-plugin 处理的
+
+⑤ src/views：
+
+　　vue cli 3 的 src文件夹 新增 views文件夹 用来存放 “页面”，区分 components（组件）
+
+⑥ 去掉 build（根据config中的配置来定义规则）、config（配置不同环境的参数）文件夹 ：
+
+ 　　vue cli 3 中，这些配置 你可以通过 命令行参数、或 vue.config.js （在根目录 新建一个 vue.config.js 同名文件）里的 devServer 字段配置开发服务器
+
+⑦ babel.config.js：
+
+　　配置Babel 。Vue CLI 使用了 Babel 7 中的新配置格式 babel.config.js。和 .babelrc 或 package.json 中的 babel 字段不同，这个配置文件不会使用基于文件位置的方案，而是会一致地运用到项目根目录以下的所有文件，包括 node_modules 内部的依赖。官方推荐在 Vue CLI 项目中始终使用 babel.config.js 取代其它格式。
+
+⑧ 根目录的一些其他文件的改变：
+
+　　之前所有的配置文件都在vue create 搭建时preset预设 或者 后期可以通过 命令参数 、 vue.config.js 中配置
+
+根据需要在根目录下新建 vue.config.js自行配置，eg：
+
+module.exports = {
+  baseUrl: '/',// 部署应用时的根路径(默认'/'),也可用相对路径(存在使用限制)
+  outputDir: 'dist',// 运行时生成的生产环境构建文件的目录(默认''dist''，构建之前会被清除)
+  assetsDir: '',//放置生成的静态资源(s、css、img、fonts)的(相对于 outputDir 的)目录(默认'')
+  indexPath: 'index.html',//指定生成的 index.html 的输出路径(相对于 outputDir)也可以是一个绝对路径。
+  pages: {//pages 里配置的路径和文件名在你的文档目录必须存在 否则启动服务会报错
+    index: {//除了 entry 之外都是可选的
+      entry: 'src/index/main.js',// page 的入口,每个“page”应该有一个对应的 JavaScript 入口文件
+      template: 'public/index.html',// 模板来源
+      filename: 'index.html',// 在 dist/index.html 的输出
+      title: 'Index Page',// 当使用 title 选项时,在 template 中使用：<title><%= htmlWebpackPlugin.options.title %></title>
+      chunks: ['chunk-vendors', 'chunk-common', 'index'] // 在这个页面中包含的块，默认情况下会包含,提取出来的通用 chunk 和 vendor chunk
+    },
+    subpage: 'src/subpage/main.js'//官方解释：当使用只有入口的字符串格式时,模板会被推导为'public/subpage.html',若找不到就回退到'public/index.html',输出文件名会被推导为'subpage.html'
+  },
+  lintOnSave: true,// 是否在保存的时候检查
+  productionSourceMap: true,// 生产环境是否生成 sourceMap 文件
+  css: {
+    extract: true,// 是否使用css分离插件 ExtractTextPlugin
+    sourceMap: false,// 开启 CSS source maps
+    loaderOptions: {},// css预设器配置项
+    modules: false// 启用 CSS modules for all css / pre-processor files.
+  },
+  devServer: {// 环境配置
+    host: 'localhost',
+    port: 8080,
+    https: false,
+    hotOnly: false,
+    open: true, //配置自动启动浏览器
+    proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
+      '/api': {
+        target: '<url>',
+        ws: true,
+        changeOrigin: true
+      },
+      '/foo': {
+        target: '<other_url>'
+      }
+    }
+  },
+  pluginOptions: {// 第三方插件配置
+    // ...
+  }
+};
+
+npm install weixin-js-sdk --save
+
+
+cnpm install weui --save
+cnpm install weui.js --save
+cnpm install --save-dev sass-loader
+cnpm install node-sass --save-dev
+cnpm install less less-loader --save
+
+清除过期缓存
