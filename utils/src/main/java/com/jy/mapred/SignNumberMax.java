@@ -6,6 +6,12 @@ import java.util.Map;
 public class SignNumberMax {
     public static void main(String[] args) {
         Map<String, Integer> map01 = readFile("");
+        Map<String, Integer> map02 = readFile("");
+        Map<String, Integer> map03 = readFile("");
+        Map<String, Integer> map04 = readFile("");
+        Map<String, Integer> map05 = readFile("");
+        Map<String, Integer> resultMap = mergeFile(map01, map02, map03, map04, map05);
+        System.out.println(resultMap);
     }
     public static Map<String, Integer> readFile(String path) {
         return null;
