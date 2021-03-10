@@ -58,6 +58,7 @@ public class WordCountMRService {
         if (StringUtils.isEmpty(inputPath) || StringUtils.isEmpty(outputPath)) {
             return;
         }
+
 //        FileInputFormat.addInputPath(job, new Path(inputPath));
 //        FileOutputFormat.setOutputPath(job, new Path(outputPath));
 //
