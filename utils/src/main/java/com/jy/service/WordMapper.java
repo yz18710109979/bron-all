@@ -29,7 +29,6 @@ public class WordMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
      */
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-//        super.map(key, value, context);
         // 防止中文乱码
         String sentence = new String(value.getBytes(), 0, value.getLength(), "UTF-8").trim();
         if (StringUtils.isNotEmpty(sentence)) {
